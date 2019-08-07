@@ -1,0 +1,40 @@
+.\" @(#)geom v1.0
+.TH GEOM local "20 January 1990"
+.SH NAME
+geom \- geometric arithmetic utilities for SRGP
+.SH ROUTINES
+.TP 10
+point GEOM_sumOfPoints (point pt1, point pt2);
+Adds two points, returning the result.
+.TP 10
+.PD 0
+int GEOM_widthOfRect (rectangle);
+.TP 10
+.PD
+int GEOM_heightOfRect (rectangle);
+Computes dimensions of a given rectangle.
+.TP 10
+void GEOM_computeRectUnion (rectangle r1, rectangle r2, rectangle *result);
+Computes union of two rectangles.
+.TP 10
+int GEOM_computeRectIntersection 
+    (rectangle r1, rectangle r2, rectangle *result);
+Computes intersection of two rectangles; returns TRUE if and only if the 
+intersection is non-null.
+.TP 10
+rectangle GEOM_rectWithCommonCenter (rectangle, int width, int height);
+Returns the rectangle whose center is the same as the center of
+the given rectangle, and whose dimensions are as given.
+.TP 10
+rectangle GEOM_rectFromDiagPoints (point pt1, point pt2);
+Returns the rectangle one of whose diagonals is specified by the
+two given points.  SRGP demands that rectangles be
+defined only by the SW-NE diagonal.
+This function is useful when the caller knows a diagonal but
+knows not which it is.
+.TP 10
+int GEOM_ptInRect (point pt, rectangle);
+Returns TRUE if and only if the given point is on the boundary of
+or in the interior of the given rectangle.
+.SH AUTHOR
+David Sklar

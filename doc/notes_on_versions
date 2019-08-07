@@ -1,0 +1,94 @@
+SRGP Version 1.1 -- RELEASED on January 9, 1992
+
+FIXED: A great number of compilation problems
+FIXED: Improper handling of grayscale monitors
+FIXED: Bugs in keyboard echo
+FIXED: A locator sample-mode bug (lost X events)
+
+IMPROVED: locator performance (by reducing round-trip server requests)
+IMPROVED: response to attempt to share a color table that does not have
+	  enough vacant cell -- no longer fatal error
+
+ADDED: a "position" field to the deluxe keyboard measure
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+SRGP Version 1.0(d) -- RELEASED in April of 91
+
+FIXED: a bug in the X11 version that made SRGP_inquireTextExtent() choke
+       on strings longer than 127 characters.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+SRGP Version 1.0(c) -- RELEASED 17 Feb 91
+
+Improved efficiency of SRGP_waitEvent().  When called with a negative parameter
+(meaning no timeout event is desired), it will enter a true wait state,
+requiring no CPU cycles.  This can help out when X terminals instead of X
+workstations are being used.  Be aware: no improved efficiency of sample mode
+has been achieved, nor is a call to SRGP_waitEvent() with a non-negative
+parameter any more efficient.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+SRGP Version 1.0(b) -- RELEASED 18 Jan 91
+
+FIXED: a bug that made keyboard input impossible when using the
+       OpenLook window manager (olwm).
+
+Minor corrections to reference manual and manpage.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+SRGP Version 1.0(a) -- RELEASED 11 Dec 90
+
+Fixed some documentation errors in the README file for the examples/ directory.
+Updated the test_keyboard example program.
+MAC:    Added the inadvertently-omitted MAC_show_patterns.c to the
+	examples/ directory.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+SRGP Version 1.0 -- RELEASED 22 Nov 90
+
+MAC:    Now supports user-controlled resizing of the screen canvas window.
+
+MAC:    Bug fix: keyboard measure contained non-ASCII chars when option-key
+	was depressed.
+
+MAC:	Unsupported MPW patches are included.
+
+ADDED:  Support for application-controlled resizing of the screen canvas
+	See section #1 of reference manual for new function call.
+
+ADDED:  Support for non-fatal handling of errors.
+	See section #8 of reference manual for details.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+SRGP Version 0.9c (beta)  --- RELEASED Aug 31
+
+Minor bug fixes
+   1. SetAttributes() previously failed to restore marker size and color
+   2. "Typeahead" events were sometimes lost when both devices on simult'ly
+
+Optimization added to all attribute-setting routines (28 Aug)
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+SRGP Version 0.9b (beta)  --- RELEASED Aug 23
+
+Improvement of Macintosh version's color support
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+SRGP Version 0.9a (beta)  --- RELEASED Aug 20
+
+Software engineering enhancements done on 19 Aug
+   Enumerated types used in place of defined constants.
+
+Major bug fix on 19 Aug
+   affecting: FillEllipseArc
+
+Minor bug fix on 18 Aug (affects only Mac)
+   SRGP now detects missing resource files and exits gracefully with a message
+
+Minor bug fix on 17 Aug: 
+   Marker size was found to be dependent upon line-width attribute
+   Now, the width of the lines in the marker is set to 1/8 of the marker radius
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+SRGP Version 0.9 (beta) --- RELEASED 16 Aug

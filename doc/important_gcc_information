@@ -1,0 +1,17 @@
+The makefiles that have been provided for you assume you have GNU's freeware
+ANSI C compiler, which should be used (barring the availability of another ANSI
+C compiler) to create the SRGP library.
+
+The object files created by GNU's compiler are compatible with objects created
+by other C compilers only if the flag "-fpcc-struct-return" is sent to gcc.
+All the makefiles I have provided indeed set that flag.
+
+It is important to note that when that flag is set, the resulting object files
+are NOT compatible with objects created by gcc with*out* that flag set.  All
+application authors who wish to use the SRGP library are encouraged to use gcc,
+so they can take advantage of prototypes, but these authors must be informed of
+the importance of the flag!
+
+If you are a system administrator or a lecturer in charge of a class using
+SRGP, please provide them with sample Makefiles and stress the flag's
+importance.

@@ -1,0 +1,66 @@
+Copyright 1990, Addison-Wesley Publishing Company, Inc.
+
+Addison-Wesley Publishing Company, Inc. makes no representations
+or warranties, express or implied, with respect to this software and
+its documentation, including without limitations, any implied warranties of
+merchantibility or fitness for a particular purpose, all of which are expressly
+disclaimed. The exclusion of implied warranties is not permitted by
+some states. The above exclusion may not apply to you. This warranty
+provides you with specific legal rights. There may be other rights that you
+have which may vary from state to state.
+
+===============================================================================
+
+You have received a directory tree whose root contains the following
+subdirectories:
+	doc: contains TeX-source doc, man pages, et. al.
+	examples: contains sample programs, and a Makefile
+	src/srgp: source for SRGP package and the tiny GEOM package
+
+The creation of the SRGP library requires an ANSI C compiler, like the freeware
+GNU C compiler (gcc).  For important information on the proper use of gcc,
+particularly its compatibility with other compilers,, consult the aptly named
+file in the "doc/" directory.  The information in that file is important for
+you and for all SRGP application developers.
+
+The makefile in this "root" directory will make the SRGP library and a set of
+example "test" applications.  The directory "src/srgp/" contains the source
+files used to create the library.  The directory "examples/" contains the
+application source files, and a README that describes the use and purpose of
+most of the example programs.
+
+The Makefile in the "src/srgp/" directory may need to modified to account for
+differences between gcc and your machine's native cc.  In particular, you may
+need to add an compiler option that identifies your machine via a defined
+macro.  For example, on Sun Sparcstations, the macro "sparc" is automatically
+defined by Sun's cc but not by gcc.  This doesn't affect SRGP, but it
+drastically affects SPHIGS; see the Makefile in "sphigs/src/sphigs/" for more
+information.  On your machine, even SRGP may be affected, so be aware!
+
+In the "doc/" directory, you'll find the SRGP reference manual, a must for any
+application developer.  The manual is provided in two incarnations, one for Mac
+and one for X11/UNIX.  Each incarnation is offered in three printing formats:
+plain ASCII text (.txt), PostScript (.ps), and TeX (.tex).  If you wish to use
+the TeX source, you *must* consult the Makefile for instructions on how to
+modify the TeX source to produce the code that should be fed to your local
+"tex" program.
+
+In the "doc/" directory, there is also a UNIX-style manpage in the usual nroff
+format.
+
+In the "src/srgp/" directory you'll find the source for both the Macintosh and
+X versions of SRGP.  Most files are used in both versions; some files (whose
+names have obvious suffixes) apply only to one version.  
+
+If you are interested in installing the Mac version, you must read the file
+"CopyToMac_instructions" in the "src/srgp/" directory.
+
+
+***** PLEASE REPORT ALL BUGS, OMISSIONS, MISLEADING STATEMENTS FOUND IN:
+	1) SRGP/GEOM libraries
+	2) doc, including these instructions
+	3) distribution method
+
+			TO:  graphtext@cs.brown.edu
+
+      Please place the keyword "Report-Software-Bug" in the subject line.

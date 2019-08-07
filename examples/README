@@ -1,0 +1,110 @@
+UNIX platform users: 
+Please read the Makefile for information on building executables for SRGP
+applications.
+
+Mac platform users: See the MacSRGP_README file.
+
+Here are brief descriptions of some of the test applications.
+
+
+   -------------------------------------------------------------------------
+			X_demo_anim *or* MAC_demo_anim
+
+This is the very same program that was shown in the Addison-Wesley booth at
+SIGGRAPH.  A nice way to become familiar with SRGP's basic functionality and
+see what SRGP application source code looks like.  The Mac version creates a
+window that fits on the MacII; the X version assumes the availability of much
+more screen real estate.  If you are using a Mac Plus or Mac SE, this demo is
+not of much use at all; much of the action will be off-screen.
+
+   -------------------------------------------------------------------------
+				 test_locator
+
+This program places the keyboard in RAW EVENT mode, and continuously displays
+the deluxe locator measure.  It is an excellent way to get to know SRGP's
+locator.  If it looks like the modifier chord and timestamp aren't working, you
+may want to re-read the reference manual's section on input carefully; they are
+supposed to reflect conditions as of the most recent mouse-button state change.
+
+You use the keyboard to control the locator's mode:
+    i -- inactive
+    s -- sample (display is updated 3 times a second)
+    e -- event
+
+You also use the keyboard to control the echo attribute:
+    c -- cursor
+    l -- rubber line
+    r -- rubber rect
+
+You can control the button mask in this way:
+    1 -- toggles the status of the LEFT button in the button mask
+		 ... etc. ...   for 2 (MIDDLE) and 3 (RIGHT)
+
+You quit by typing:
+     q -- QUIT
+
+   -------------------------------------------------------------------------
+		                 test_keyboard
+
+Tests keyboard in RAW EVENT mode only.  Each time you hit a key, a display
+of the deluxe keyboard measure's fields is updated.
+
+   -------------------------------------------------------------------------
+		              testcolor_and_resize  
+
+For 8-bit-deep framebuffer support only.  Creates a lovely, relaxing image of
+red fading into blue.  A vertical bisecting line and a horizontal bisecting
+line are then XOR'd over the image to divide the window into four quadrants.
+When you resize the window, the image is redrawn and the bisectors 
+recalculated and redrawn.  The code shows how to use SRGP's resize callback
+and how to load the SRGP color table.
+
+   -------------------------------------------------------------------------
+		     show_patterns *or* MAC_show_patterns
+
+Simply displays all the built-in patterns and their corresponding indices.  The
+MAC one assumes the screen real estate of a Mac II, and thus goes off the edge
+on a Plus/SE.
+
+
+   -------------------------------------------------------------------------
+				  testrubber
+
+The left mouse button adds a new line to the screen.  The right mouse button
+just changes the current anchor point.  Entering a 'Q' on the keyboard quits.
+
+   -------------------------------------------------------------------------
+				  testpixmap
+
+A poorly named demo, because it does a bit (no pun intended) more than that.
+It loads a pixmap from a file and fills an oval with it.  Press down the mouse
+button to see it load two identical bitmaps from a file and fill again.
+Release the mouse button to see the result of a change in foreground color and
+bitmap pattern index.  One more click terminates the demo.  WARNING: CANNOT BE
+RUN ON THE Mac -- MacSRGP does not yet support pixmaps.
+
+   -------------------------------------------------------------------------
+				   testpaint
+
+Each mouse button paints a different primary color.  Holding down more than one
+mouse button produces a "blend" of primary colors.  Basically shows the use of
+the locator in sample mode, which in this version of SRGP is not blazingly
+fast.  (NOTE: works even on monochrome screens, because of its use of patterns
+as a secondary attribute.)
+To exit, issue an interrupt from the UNIX shell or (on Mac) click in close box.
+
+   -------------------------------------------------------------------------
+			       testeditkeyboard
+
+Shows the use of the keyboard in edit mode.  You are asked to enter first a
+number, than a string.  The first "number" characters in the string you enter
+will be echoed.  To get the full effect, using the backspace key to correct
+typos as you use the keyboard to enter information.  
+To exit, issue an interrupt from the UNIX shell or (on Mac) click in close box.
+
+   -------------------------------------------------------------------------
+				 testtimestamp
+
+Each time you click the left mouse button, the current SRGP timestamp value is
+printed.  Much ado about nothing.  
+To exit, issue an interrupt from the UNIX shell or (on Mac) click in close box.

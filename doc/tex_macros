@@ -1,0 +1,479 @@
+%%%FONTS: tt  roman  bold  italic  sans sansbold slant
+%%%
+%%%   normal is 10pt
+%%%   tiny   is 8pt
+%%%   big    is 12pt
+%%%
+%%%
+\font\tttiny=cmtt8
+\font\romantiny=cmr8
+\font\boldtiny=cmbx8
+\font\italictiny=cmti8
+\font\mathitalictiny=cmmi8
+\font\slanttiny=cmsl8
+\font\sanstiny=cmss8
+%
+\newdimen\baselineskiptiny
+\newdimen\ttbaselineskiptiny
+\baselineskiptiny=9pt
+\ttbaselineskiptiny=8pt
+%
+%
+%
+\font\ttnormal=cmtt10
+\font\romannormal=cmr10
+\font\boldnormal=cmbx10
+\font\italicnormal=cmti10
+\font\mathitalicnormal=cmmi10
+\font\sansnormal=cmss10
+\font\sansboldnormal=cmssbx10
+\font\slantnormal=cmsl10
+%  
+\newdimen\baselineskipnormal
+\newdimen\ttbaselineskipnormal
+\baselineskipnormal=12pt
+\ttbaselineskipnormal=10pt
+%
+%
+\font\sansbig=cmss10 scaled 1200
+%  
+%
+\font\title=cmssbx10 scaled 1440
+%
+
+%
+\hsize=7.5in
+\newdimen\normalhsize
+\normalhsize=7.5in
+\newdimen\withpicturehsize
+\withpicturehsize=5in
+\vsize=9.8in
+\hoffset=-1.5cm
+\voffset=-1cm
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newdimen\ttbaselineskip
+%
+%
+\def\bs{\char '134 }  % A backslash character
+\def\lb{\char '173 }  % A left brace character 
+\def\rb{\char '175 }  % A right brace character
+%
+%
+%
+%
+%
+%
+\def\hidehrule#1#2{\kern-#1%
+  \hrule height#1 depth#2 \kern-#2 }
+%
+\def\hidevrule#1#2{\kern-#1{\dimen0=#1
+    \advance\dimen0 by#2\vrule width\dimen0}\kern-#2 }
+%
+\def\makeblankbox#1#2{\hbox{\lower\dp0\vbox{\hidehrule{#1}{#2}%
+   \kern-#1 %
+   \hbox to \wd0{\hidevrule{#1}{#2}%
+      \raise\ht0\vbox to #1{}%
+      \lower\dp0\vtop to #1{}%
+      \hfil\hidevrule{#2}{#1}}%
+   \kern-#1\hidehrule{#2}{#1}}}}
+%
+\def\kbkey#1{\setbox0=\hbox{\vbox{\kern1pt\hbox{\fonttiny~#1~}\kern1pt}}%
+             \setbox1=\copy0%
+             \unhbox1%
+             \kern-\wd0%
+             \makeblankbox{0pt}{0.3pt}}
+%
+%
+\def\advancemypagenumber{\global\advance\mypagenumber by 1}
+%
+%
+%%%\FONTNORMAL
+\def\fontnormal{\let\tt=\ttnormal
+\let\roman=\romannormal
+\let\bold=\boldnormal
+\let\italic=\italicnormal
+\let\sans=\sansnormal
+\let\sansbold=\sansboldnormal
+\let\slant=\slantnormal
+\textfont0=\romannormal \scriptfont0=\romantiny
+\textfont1=\mathitalicnormal \scriptfont1=\mathitalictiny
+\baselineskip=\baselineskipnormal
+\ttbaselineskip=\ttbaselineskipnormal
+\roman}
+%
+%
+%%%\FONTBIG
+\def\fontbig{\let\tt=\ttbig
+\let\roman=\romanbig
+\let\bold=\boldbig
+\let\italic=\italicbig
+\let\sans=\sansbig
+\let\sansbold=\sansboldbig
+\let\slant=\slantbig
+\textfont0=\romanbig \scriptfont0=\romannormal
+\textfont1=\mathitalicbig \scriptfont1=\mathitalicnormal
+\baselineskip=\baselineskipbig
+\ttbaselineskip=\ttbaselineskipbig
+\roman}
+%
+%
+%%%\FONTTINY
+\def\fonttiny{\let\tt=\tttiny
+\let\roman=\romantiny
+\let\bold=\boldtiny
+\let\italic=\italictiny
+\let\sans=\sanstiny
+\let\sansbold=\sansboldtiny
+\let\slant=\slanttiny
+\textfont0=\romantiny
+\textfont1=\mathitalictiny
+\baselineskip=\baselineskiptiny
+\ttbaselineskip=\ttbaselineskiptiny
+\roman}
+%
+%
+%
+%%%\ITIT{...}
+%%%\TTIT{...}
+%%%\SLANTIT{...}
+%%%\BOLDIT{...}
+%%%\SANSIT{...}
+%             put text argument into specified font
+\def\itit#1{\bgroup\italic #1\/\egroup}
+\def\ttit#1{\bgroup\tt #1\egroup}
+\def\slantit#1{\bgroup\slant #1\/\egroup}
+\def\boldit#1{\bgroup\bold #1\/\egroup}
+\def\sansit#1{\bgroup\sans #1\/\egroup}
+%
+%
+%
+%%%\CMD{...}
+%%%\FILETITLE{...}
+%    I like to enclose specification of computer commands in single-quotes.
+%    I like to enclose specification of filenames in angle-brackets.
+\def\cmd#1{`\ttit{#1}'}
+\def\papertitle#1{`\sansit{#1}'}
+\def\filetitle#1{$\langle$\ttit{#1}$\rangle$}
+%
+%
+%
+%%%\sMILE
+%%%\fROWN
+\def\Smile{$\ddot\smile$}
+\def\Frown{$\ddot\frown$}
+%
+%
+%
+%
+%%%\SECTION{...}
+%%%\SUBSECTION{...}
+\def\subsection#1{\medbreak\filbreak%
+\moveleft2pt\hbox{\vrule\vtop{%
+\hrule\kern1mm\hbox{\sansbig ~#1}}}\nobreak\kern2ex\nobreak\noindent\ignorespaces}%
+\let\section=\subsection
+%
+%
+%
+%%%\MAINSECTION{...}
+\def\mainsection#1{\bigbreak\filbreak%
+\moveleft4pt\hbox{\vrule\vtop{%
+\hrule\kern1mm\hbox{\kern1mm\vrule\vtop{%
+\hrule\kern1mm\hbox{\sansbig ~#1~~~~}}}}}\nobreak\kern2ex\nobreak\noindent\ignorespaces}
+%
+%
+%
+%
+%%%\NEWPARWITHPICTURE
+\def\newparwithpicture{\newpar\bgroup\hsize=\withpicturehsize\def\par{\endgraf\egroup}}
+%
+%
+%%%\HANGPARAGRAPH
+%%%\HANGPAR
+%	the following paragraph's first line is not indented, but the
+%	remaining lines are indented.
+%
+\def\hangpar{\vskip\baselineskip\noindent\hang}
+\let\hangparagraph=\hangpar
+%
+%
+%%%\INDENTPARAGRAPH
+%%%\INDENTPAR
+%	the following paragraph is indented in its entirety.
+%
+\def\indentpar{\medskip\hang}
+\let\indentparagraph=\indentpar
+%  
+%
+%%%\DEFINETITLE{....}
+%  	the title of the paper is the text parameter.  must be called
+%  	once, immediately after the input of this macroset.
+%
+\def\definetitle#1{\message{*********DOCUMENT #1}\newpage\ensurepagealign%
+   \clearnotenumber\mypagenumber=1
+   \def\subject{#1}
+   \def\firstheadline{\regheadline}}
+%  
+%
+%
+%%%\MAKETITLE{....}
+%  	the title of the paper is the text parameter.  must be called
+%  	once, immediately after the input of this macroset.
+%
+\def\maketitle#1{\message{*********DOCUMENT #1}\newpage\ensurepagealign%
+   \clearnotenumber\mypagenumber=1%
+   \def\subject{#1}%
+   \def\firstheadline{\hfil}%
+   \line{\hfil\vbox{\hrule\kern+4pt\hbox{\title \subject}\kern+2pt\hrule}\hfil}%
+   \nobreak\kern4ex\nobreak\noindent\ignorespaces}
+%  
+%
+%
+\headline={\ifnum\mypagenumber=1\firstheadline\else\regheadline\fi}
+%
+%
+%  DEFAULTS, so documents don't have to call maketitle or definetitle
+\def\firstheadline{\hfil}
+\def\subject{~~}
+%
+\def\regheadline{\vbox{\hbox to \normalhsize{\sansbig\subject\hfil\number\mypagenumber}\kern+1pt\hrule\vfill}}
+%
+%
+%%%\ELLIPSES
+%%%\ELLIPSE
+\def\oneellipse{\line{~~~~~~~~~~~~$\bullet$\hfill}\kern-1ex}
+\def\ellipses{\oneellipse\oneellipse\kern-1.2ex}
+\let\ellipse=\ellipses
+%
+%
+%
+%
+%
+%%%\NEWPARAGRAPH
+%%%\NEWPAR
+%	to be used to cause inter-paragraph spacing and no indentation. 
+%	Normally, no extra space is put between paragraphs.
+%
+\def\newparagraph{\vskip\baselineskip\filbreak\noindent}
+\let\newpar=\newparagraph
+%  
+%
+%
+%%%\NEWPAGE
+\def\newpage{\vfil\eject}
+%
+%
+%
+%%%\qSTORAGE name   data-type
+%%%\qVALPARAM name   data-type
+%%%\qRECEIVES name   data-type
+%%%\qCALCULATES name   data-type
+%%%\qINITIALIZES name   data-type
+%%%\qUPDATES name   data-type
+%%%\qRETURNS name   data-type
+%%%\qNULL
+%%%\qPROCEXP nameOfProcedure whatTokenIsBeingExpanded
+%%%\qFUNCEXP nameOfFunction whatTokenIsBeingExpanded
+%%%\qPROC nameOfProcedure
+%%%\qFUNC nameOfFunction
+%%%\qCUSTOM anything at all
+%%%\qEXP whatTokenIsBeingExpanded
+%%%\qREVAMP token
+\def\newdisplay{\filbreak\bigskip\hrule\smallskip\filbreak\noindent}
+\let\Qnull=\newdisplay
+\def\Qstorage#1#2{\noindent\sansbold Requires storage for #1 [#2]\roman\par}
+\def\Qreturns#1#2{\noindent\sansbold Returns #1 [#2]\roman\par}
+\def\Qvalparam#1#2{\noindent\sansbold Receives #1 [#2]\roman\par}
+\def\Qreceives#1#2{\noindent\sansbold Receives #1 [#2]\roman\par}
+\def\Qcalculates#1#2{\noindent\sansbold Calculates #1 [#2]\roman\par}
+\def\Qinitializes#1#2{\noindent\sansbold Initializes #1 [#2]\roman\par}
+\def\Qupdates#1#2{\noindent\sansbold Updates #1 [#2]\roman\par}
+\def\Qfuncexp#1#2{\newdisplay\sansbold FUNCTION \ttit{#1} (expansion of \itit{#2})\roman\par}
+\def\Qprocexp#1#2{\newdisplay\sansbold PROCEDURE \ttit{#1} (expansion of \itit{#2})\roman\par}
+\def\Qproc#1{\newdisplay\sansbold PROCEDURE \ttit{#1}\roman\par}
+\def\Qcustom#1{\newdisplay\sansbold #1 \roman\par}
+\def\Qfunc#1{\newdisplay\sansbold FUNCTION \ttit{#1}\roman\par}
+\def\Qexp#1{\newdisplay\sansbold (expansion of \itit{#1})\roman\par}
+\def\Qrevamp#1{\newdisplay\sansbold (revamp of \itit{#1})\roman\par}
+\def\Qcomment#1{\hfill\bgroup\italic #1 \egroup}
+%
+%
+%
+%%%\BEGINLINES
+%%%\ENDLINES
+\def\beginlines{\bgroup\obeylines}
+\def\endlines{\egroup}
+%
+%
+%
+%  Code and listings are printed using a simplified version of
+%  Knuth's \setupverbatim, so that
+%  all lines and spaces are significant and certain special characters
+%  are made temporarily un-special.
+%  See Appendix E of TeXbook.
+%
+\chardef\other=12
+\def\verbatim{
+  \catcode`\&=\other
+  \catcode`\#=\other
+  \catcode`\%=\other
+  \catcode`\~=\other
+  \catcode`\_=\other
+  \catcode`\^=\other
+  \obeyspaces\obeylines}
+\def\strongverbatim{
+  \catcode`\{=\other
+  \catcode`\}=\other
+  \verbatim}
+{\obeyspaces\gdef {\ }}
+%
+%
+%
+%
+%
+%%%\BEGINCODE
+%%%\BEGINTINYCODE
+%%%\BEGINVERBATIMCODE   allows { and } to be used within the code
+%%%\ENDCODE
+\def\begincode{\filbreak\bgroup\baselineskip=\ttbaselineskip\def\par{\leavevmode\endgraf}\tt\verbatim}
+\def\begintinycode{\filbreak\bgroup\def\par{\leavevmode\endgraf}\fonttiny\tt\verbatim}
+\def\beginverbatimcode{\filbreak\bgroup\def\par{\leavevmode\endgraf}\fonttiny\tt\strongverbatim}
+\def\endcode{\egroup\filbreak\medskip}
+%
+%
+%
+%%%\NEWSYNOPSIS
+%%%\NEXTSYNOPSIS
+%%%\ENDSYNOPSIS
+\def\nextsynopsis{\filbreak\bgroup\parindent=0pt\def\par{\leavevmode\endgraf}\tt\verbatim}
+\def\newsynopsis{\nobreak\bgroup\parindent=0pt\def\par{\leavevmode\endgraf}\tt\verbatim}
+\def\endsynopsis{\egroup\smallskip\hang}
+%
+%
+%
+%
+%%%\BEGINLISTING
+%%%\ENDLISTING
+\def\beginlisting{\filbreak\bgroup\baselineskip=\ttbaselineskip\def\par{\leavevmode\endgraf}\tt\verbatim\parindent=0pt\line{1:::5::::0::::5::::0::::5::::0::::5::::0::::5::::0::::5::::0::::5::::0::::5\hfil}\kern-8pt\line{\hrulefill}\kern-8pt}
+%
+\let\endlisting=\endcode
+%
+%
+%
+%
+%
+%
+%
+%
+%%%\BOXIT
+\def\boxit#1{\vbox{\hrule\hbox{\vrule\kern3pt
+   \vbox{\kern3pt#1\kern3pt}\kern3pt\vrule}\hrule}}
+%
+%
+%
+%
+%
+%%%\COMMENT{text}
+\def\comment#1{\hfil\bgroup\italic #1 \egroup\hfil}
+%
+%
+%%%\INCODE{filename}
+\def\incode#1{\def\xxx{\input#1}\begincode\xxx\par\endcode}
+%
+%
+%
+%
+%%%\ITEMMMMMMMMMMMMMMMM
+%%%\BULLITEMMMMMMMMMMMMMMMM
+\def\item{\smallskip\par\hangindent\parindent \textindent}
+\def\itemm{\smallskip\par\indent \hangindent2\parindent \textindent}
+\def\itemmm{\smallskip\par\indent\indent \hangindent3\parindent \textindent}
+\def\itemmmm{\smallskip\par\indent\indent\indent \hangindent4\parindent \textindent}
+\def\itemmmmm{\smallskip\par\indent\indent\indent\indent \hangindent5\parindent \textindent}
+\def\itemmmmmm{\smallskip\par\indent\indent\indent\indent\indent \hangindent6\parindent \textindent}
+\def\bullitem{\item{$\bullet$}}
+\def\bullitemm{\itemm{$\bullet$}}
+\def\bullitemmm{\itemmm{$\bullet$}}
+\def\bullitemmmm{\itemmmm{$\bullet$}}
+\def\bullitemmmmm{\itemmmmm{$\bullet$}}
+\def\bullitemmmmmm{\itemmmmmm{$\bullet$}}
+\def\ttitem#1{\item{\ttit{#1~~}}}
+\def\ttitemm#1{\itemm{\ttit{#1~~}}}
+\def\ttitemmm#1{\itemmm{\ttit{#1~~}}}
+\def\ttitemmmm#1{\itemmmm{\ttit{#1~~}}}
+\def\ttitemmmmm#1{\itemmmmm{\ttit{#1~~}}}
+\def\ttitemmmmmm#1{\itemmmmmm{\ttit{#1~~}}}
+\def\bolditem#1{\item{\boldit{#1~~}}}
+\def\bolditemm#1{\itemm{\boldit{#1~~}}}
+\def\bolditemmm#1{\itemmm{\boldit{#1~~}}}
+\def\bolditemmmm#1{\itemmmm{\boldit{#1~~}}}
+\def\bolditemmmmm#1{\itemmmmm{\boldit{#1~~}}}
+\def\bolditemmmmmm#1{\itemmmmmm{\boldit{#1~~}}}
+%
+%
+%
+%%%\CLEARNOTENUMBER
+%%%\MYFOOTNOTE{text}
+\newcount\notenumber
+\def\clearnotenumber{\notenumber=0}
+\def\myfootnote#1{\advance\notenumber by 1\footnote{$^{\the\notenumber}$}{#1}}
+\clearnotenumber
+\catcode`@=11
+\def\footnote#1{\edef\@sf{\spacefactor\the\spacefactor}#1\@sf
+    \insert\footins\bgroup\fonttiny
+    \interlinepenalty100 \let\par=\endgraf
+    \leftskip=0pt  \rightskip=0pt
+    \splittopskip=10pt plus 1pt minus 1pt  \floatingpenalty=20000
+    \smallskip\item{#1}\bgroup\strut\aftergroup\@foot\let\next}
+\skip\footins=12pt plus 2pt minus 4pt
+\dimen\footins=30pc
+%
+%
+%
+%
+\nopagenumbers
+\raggedbottom
+%
+\parskip=0pt
+\parindent=20pt
+%
+\fontnormal
+%
+%
+\def\today{\number\day\space
+   \ifcase\month\or
+   Jan\or Feb\or Mar \or Apr \or May \or Jun \or Jul \or Aug \or Sept \or
+   Oct\or Nov\or Dec\fi
+   \space\number\year}
+\newcount\n \newcount\m 
+\def\clock{\n=\time \divide\n 60
+  \m=-\n \multiply\m 60 \advance\m \time
+  \twodigits\n:\twodigits\m}
+\def\twodigits#1{\ifnum #1<10 0\fi \number#1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+%
+\def\ensurepagealign{}
+%
+%
+%		MY OUTPUT ROUTINE
+\newcount\firstpagetoprint
+\newcount\lastpagetoprint
+%
+% The above boundaries are defined by the PHYSICAL PAGE NUMBER.
+%
+\newcount\mypagenumber
+\mypagenumber=1        % This is a VIRTUAL PAGE NUMBER.
+\firstpagetoprint=1
+\lastpagetoprint=99999
+%
+\output={\sklaroutput}
+\def\sklaroutput{\sklarshipout\vbox{\makeheadline\pagebody\makefootline}
+  \advancemypagenumber\advancepageno\deadcycles=0
+  \ifnum\outputpenalty>-\@MM \else\dosupereject\fi}
+%
+\def\sklarshipout#1{\ifnum\pageno<\firstpagetoprint\setbox3=#1\else\ifnum\pageno>\lastpagetoprint\setbox3=#1\else\shipout#1\fi\fi}
+%
+%
+
+\firstpagetoprint=1
+\lastpagetoprint=99999

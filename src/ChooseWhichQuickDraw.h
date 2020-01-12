@@ -9,5 +9,4 @@
 *		#undef COLOR_QUICKDRAW
 **/
 
-
-HEY!!  HERE YOU MUST PUT ONE OF THE ABOVE LINES! $#*&()$#*@(!$*(#
+#define COLOR_QUICKDRAW

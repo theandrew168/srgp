@@ -1,7 +1,27 @@
 #include "srgp.h"
+
 #include <stdio.h>
 
-main()
+static char bitpat_0 = {
+   0xf0, 0xf0, 0xf0, 0xf0, 0x0f, 0x0f, 0x0f, 0x0f,
+};
+
+static char bitpat_106 = {
+   0xf0, 0xf0, 0xf0, 0xf0, 0x0f, 0x0f, 0x0f, 0x0f
+};
+
+static int pixpat_0 = {
+   2, 2, 2, 2, 3, 3, 3, 3,
+   2, 2, 2, 2, 3, 3, 3, 3,
+   2, 2, 2, 2, 3, 3, 3, 3,
+   2, 2, 2, 2, 3, 3, 3, 3,
+   4, 4, 4, 4, 5, 5, 5, 5,
+   4, 4, 4, 4, 5, 5, 5, 5,
+   4, 4, 4, 4, 5, 5, 5, 5,
+   4, 4, 4, 4, 5, 5, 5, 5,
+};
+
+main(void)
 {
    FILE *f;
 

@@ -10,12 +10,14 @@ main(void)
     Display* dpy = XOpenDisplay(NULL);
     assert(dpy);
 
-    int black = BlackPixel(dpy, DefaultScreen(dpy));
-    int white = WhitePixel(dpy, DefaultScreen(dpy));
+    int screen = XDefaultScreen(dpy);
+
+    int black = XBlackPixel(dpy, screen);
+    int white = XWhitePixel(dpy, screen);
 
     Window w = XCreateSimpleWindow(
         dpy,
-        DefaultRootWindow(dpy),
+        XRootWindow(dpy, screen),
         0,
         0,
         200,

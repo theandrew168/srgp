@@ -82,7 +82,7 @@ SRGP__initColor (requested_planes)
 		XCreateColormap (srgpx__display, 
 				 srgp__curActiveCanvasSpec.drawable.win,
 				 DefaultVisual(srgpx__display,srgpx__screen),
-				 AllocAll);
+				 AllocNone);
 	    XSetWindowColormap (srgpx__display, 
 				srgp__curActiveCanvasSpec.drawable.win,
 				srgpx__colormap);
@@ -92,10 +92,10 @@ SRGP__initColor (requested_planes)
       }
 
       /* Only first two entries of LUT are init'd */
-      XStoreNamedColor 
-	 (srgpx__display, srgpx__colormap, "white", COLORINDEX(0), -1);
-      XStoreNamedColor 
-	 (srgpx__display, srgpx__colormap, "black", COLORINDEX(1), -1);
+//      XStoreNamedColor 
+//	 (srgpx__display, srgpx__colormap, "white", COLORINDEX(0), -1);
+//      XStoreNamedColor 
+//	 (srgpx__display, srgpx__colormap, "black", COLORINDEX(1), -1);
    }
 
 

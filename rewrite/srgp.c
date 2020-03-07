@@ -17,7 +17,7 @@ typedef struct {
     GC gc;
 } srgp_state;
 
-// Global state is unavoidable when keeping API compatibility.
+// Global state is unavoidable when maintaining API compatibility.
 // Keeping it all in one spot at least makes it easier to track.
 static srgp_state _state;
 
@@ -27,16 +27,20 @@ point SRGP_defPoint(int x, int y)
     return p;
 }
 
-void SRGP_text(point origin, char* text)
+void SRGP_text(point origin, char* str)
 {
+    XSetFillStyle(
+        _state.display,
+        _state.gc,
+        SOLID);
     XDrawString(
         _state.display,
         _state.window,
         _state.gc,
         origin.x,
         _state.height - origin.y,
-        text,
-        strlen(text));
+        str,
+        strlen(str));
     XFlush(_state.display);
 }
 
@@ -49,6 +53,8 @@ void SRGP_begin(char* name, int w, int h, int planes, bool trace)
     _state.height = h;
 
     _state.display = XOpenDisplay(NULL);
+    assert(_state.display != NULL);
+
     int screen = XDefaultScreen(_state.display);
     int black = XBlackPixel(_state.display, screen);
     int white = XWhitePixel(_state.display, screen);
@@ -98,4 +104,29 @@ void
 SRGP_beep(void)
 {
     XBell(_state.display, 0);
+}
+
+void
+SRGP_setFillStyle(drawStyle value)
+{
+    XSetFillStyle(_state.display, _state.gc, value);
+}
+
+void
+SRGP_setFillBitmapPattern(int value)
+{
+//    XSetStipple(_state.display, _state.gc, 
+}
+
+void
+SRGP_fillRectangleCoord(int left_x, int bottom_y, int right_x, int top_y)
+{
+    XFillRectangle(
+        _state.display,
+        _state.window,
+        _state.gc,
+        left_x,
+        _state.height - top_y,
+        right_x - left_x + 1,
+        top_y - bottom_y + 1);
 }

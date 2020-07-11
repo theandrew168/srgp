@@ -1,4 +1,5 @@
-#include <stdbool.h>
+#ifndef SRGP_SRGP_H_INCLUDED
+#define SRGP_SRGP_H_INCLUDED
 
 typedef unsigned char boolean;
 #define TRUE  1
@@ -66,3 +67,5 @@ void SRGP_ellipseArc(rectangle extentRect, double startAngle, double endAngle);
 //void SRGP_setFillStyle(drawStyle value);
 //void SRGP_setFillBitmapPattern(int value);
 //void SRGP_fillRectangleCoord(int left_x, int bottom_y, int right_x, int top_y);
+
+#endif

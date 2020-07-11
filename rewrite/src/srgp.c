@@ -1,5 +1,4 @@
 #include <assert.h>
-#include <stdbool.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -127,7 +126,7 @@ SRGP_begin(char* name, int w, int h, int planes, boolean trace)
     XStoreName(_state.display, _state.window, name);
 
     XFontStruct* font_info = XLoadQueryFont(_state.display, "8x13");
-    assert(font_info);
+    assert(font_info != NULL);
 
     XGCValues gc_values = {
         .font = font_info->fid,

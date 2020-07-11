@@ -1,28 +1,40 @@
 #include <stdbool.h>
 
-enum {
-    TRUE = true,
-    FALSE = false,
-};
+typedef unsigned char boolean;
+#define TRUE  1
+#define FALSE 0
+
+//typedef enum {
+//    CONTINUOUS = 0,
+//    DASHED,
+//    DOTTED,
+//    DOT_DASHED,
+//} lineStyle;
 
 typedef enum {
-    SOLID = 0,
-    PIXMAP_PATTERN,
-    BITMAP_PATTERN_TRANSPARENT,
-    BITMAP_PATTERN_OPAQUE,
-} drawStyle;
+    MARKER_CIRCLE = 0,
+    MARKER_SQUARE,
+    MARKER_X,
+} markerStyle;
 
-typedef struct point {
+//typedef enum {
+//    SOLID = 0,
+//    PIXMAP_PATTERN,
+//    BITMAP_PATTERN_TRANSPARENT,
+//    BITMAP_PATTERN_OPAQUE,
+//} drawStyle;
+
+typedef struct {
     int x;
     int y;
 } point;
 
-typedef struct rectangle {
+typedef struct {
     point bottomLeft;
     point topRight;
 } rectangle;
 
-void SRGP_begin(char* name, int w, int h, int planes, bool trace);
+void SRGP_begin(char* name, int w, int h, int planes, boolean trace);
 void SRGP_end(void);
 
 // Lines and polylines (page 27)
@@ -30,6 +42,12 @@ void SRGP_lineCoord(int x1, int y1, int x2, int y2);
 void SRGP_line(point pt1, point pt2);
 void SRGP_polyLineCoord(int vertexCount, int* xArray, int* yArray);
 void SRGP_polyLine(int vertexCount, point* vertices);
+
+// Markers and polymarkers (page 28-29)
+void SRGP_markerCoord(int x, int y);
+void SRGP_marker(point pt);
+void SRGP_polyMarkerCoord(int vertexCount, int* xArray, int* yArray);
+void SRGP_polyMarker(int vertexCount, point* vertices);
 
 //point SRGP_defPoint(int x, int y);
 //void SRGP_text(point origin, char* str);

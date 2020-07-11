@@ -9,21 +9,25 @@ main(void)
 {
     SRGP_begin("SRGP Rewrite", 800, 600, 2, FALSE);
 
-    SRGP_lineCoord(0, 0, 100, 300);
+    SRGP_lineCoord(175, 200, 320, 200);
+    SRGP_lineCoord(200, 140, 200, 280);
 
-    point a = { 0, 300 };
-    point b = { 100, 0 };
-    SRGP_line(a, b);
+    int months[] = { 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320 };
+    int balance[] = { 160, 180, 260, 210, 200, 240, 250, 170, 180, 170, 220, 190 };
+    SRGP_polyLineCoord(12, months, balance);
 
-    int xArray[] = { 100, 200 };
-    int yArray[] = { 0, 300 };
-    SRGP_polyLineCoord(2, xArray, yArray);
-
-    point ab[] = {
-        { 100, 300 },
-        { 200, 0 },
+    point bowtie[] = {
+        { 100, 100 },
+        { 100, 60 },
+        { 120, 76 },
+        { 140, 60 },
+        { 140, 100 },
+        { 120, 84 },
+        { 100, 100 },
     };
-    SRGP_polyLine(2, ab);
+    SRGP_polyLine(7, bowtie);
+
+    SRGP_polyMarkerCoord(12, months, balance);
 
     nanosleep(&(struct timespec){ .tv_sec = 3}, NULL);
     SRGP_end();

@@ -29,6 +29,11 @@ main(void)
 
     SRGP_polyMarkerCoord(12, months, balance);
 
+    SRGP_rectangleCoord(50, 25, 150, 175);
+
+    rectangle r = SRGP_defRectangle(50 + 5, 25 + 5, 150 + 5, 175 + 5);
+    SRGP_rectangle(r);
+
     nanosleep(&(struct timespec){ .tv_sec = 3}, NULL);
     SRGP_end();
 }

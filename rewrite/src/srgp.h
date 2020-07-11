@@ -34,6 +34,7 @@ typedef struct {
     point topRight;
 } rectangle;
 
+// Baseline stuff inferred from Tronche's tutorial
 void SRGP_begin(char* name, int w, int h, int planes, boolean trace);
 void SRGP_end(void);
 
@@ -49,7 +50,14 @@ void SRGP_marker(point pt);
 void SRGP_polyMarkerCoord(int vertexCount, int* xArray, int* yArray);
 void SRGP_polyMarker(int vertexCount, point* vertices);
 
-//point SRGP_defPoint(int x, int y);
+// Polygons and rectangles (page 29-30)
+void SRGP_polygon(int vertexCount, point* vertices);
+void SRGP_rectangleCoord(int leftX, int bottomY, int rightX, int topY);
+void SRGP_rectanglePt(point bottomLeft, point topRight);
+void SRGP_rectangle(rectangle rect);
+point SRGP_defPoint(int x, int y);
+rectangle SRGP_defRectangle(int leftX, int bottomY, int rightX, int topY);
+
 //void SRGP_text(point origin, char* str);
 //void SRGP_beep(void);
 //void SRGP_setFillStyle(drawStyle value);

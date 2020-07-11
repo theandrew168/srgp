@@ -254,13 +254,51 @@ SRGP_polyMarker(int vertexCount, point* vertices)
     }
 }
 
-//point
-//SRGP_defPoint(int x, int y)
-//{
-//    point p = { x, y };
-//    return p;
-//}
-//
+void
+SRGP_polygon(int vertexCount, point* vertices)
+{
+    SRGP_polyLine(vertexCount, vertices);
+    SRGP_line(vertices[0], vertices[vertexCount - 1]);
+}
+
+void
+SRGP_rectangleCoord(int leftX, int bottomY, int rightX, int topY)
+{
+    XDrawRectangle(
+        _state.display, _state.window, _state.gc,
+        leftX, FLIP_VERT(topY), rightX - leftX, topY - bottomY);
+    XFlush(_state.display);
+}
+
+void
+SRGP_rectanglePt(point bottomLeft, point topRight)
+{
+    SRGP_rectangleCoord(bottomLeft.x, bottomLeft.y, topRight.x, topRight.y);
+}
+
+void
+SRGP_rectangle(rectangle rect)
+{
+    SRGP_rectangleCoord(rect.bottomLeft.x, rect.bottomLeft.y, rect.topRight.x, rect.topRight.y);
+}
+
+point
+SRGP_defPoint(int x, int y)
+{
+    point p = { x, y };
+    return p;
+}
+
+rectangle
+SRGP_defRectangle(int leftX, int bottomY, int rightX, int topY)
+{
+    rectangle r = {
+        .bottomLeft = { leftX, bottomY },
+        .topRight = { rightX, topY },
+    };
+    return r;
+}
+
 //void
 //SRGP_text(point origin, char* str)
 //{

@@ -58,6 +58,9 @@ void SRGP_rectangle(rectangle rect);
 point SRGP_defPoint(int x, int y);
 rectangle SRGP_defRectangle(int leftX, int bottomY, int rightX, int topY);
 
+// Circles and ellipses (page 30-31)
+void SRGP_ellipseArc(rectangle extentRect, double startAngle, double endAngle);
+
 //void SRGP_text(point origin, char* str);
 //void SRGP_beep(void);
 //void SRGP_setFillStyle(drawStyle value);

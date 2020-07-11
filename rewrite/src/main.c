@@ -34,6 +34,8 @@ main(void)
     rectangle r = SRGP_defRectangle(50 + 5, 25 + 5, 150 + 5, 175 + 5);
     SRGP_rectangle(r);
 
+    SRGP_ellipseArc(r, 45, 270);
+
     nanosleep(&(struct timespec){ .tv_sec = 3}, NULL);
     SRGP_end();
 }

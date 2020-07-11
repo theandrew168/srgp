@@ -299,6 +299,28 @@ SRGP_defRectangle(int leftX, int bottomY, int rightX, int topY)
     return r;
 }
 
+void
+SRGP_ellipseArc(rectangle extentRect, double startAngle, double endAngle)
+{
+    int xangle1, xangle2;
+    if (startAngle <= endAngle) {
+        xangle1 = startAngle * 64;
+        xangle2 = (endAngle - startAngle) * 64;
+    } else {
+        xangle1 = endAngle * 64;
+        xangle2 = (startAngle - 360 - endAngle) * 64;
+    }
+
+    XDrawArc(
+        _state.display, _state.window, _state.gc,
+        extentRect.bottomLeft.x,
+        FLIP_VERT(extentRect.topRight.y),
+        extentRect.topRight.x - extentRect.bottomLeft.x,
+        extentRect.topRight.y - extentRect.bottomLeft.y,
+        xangle1, xangle2);
+    XFlush(_state.display);
+}
+
 //void
 //SRGP_text(point origin, char* str)
 //{

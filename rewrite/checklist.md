@@ -4,15 +4,15 @@
 - [ ] void SRGP_setAttributes (attributeGroup* group);
 - [ ] void SRGP_setBackgroundColor (int colorIndex);
 - [ ] void SRGP_setClipRectangle (rectangle clipRect);
-- [ ] void SRGP_setColor (int colorIndex);
+- [x] void SRGP_setColor (int colorIndex);
 - [ ] void SRGP_setFillBitmapPattern (int patternIndex);
 - [ ] void SRGP_setFillPixmapPattern (int patternIndex);
 - [ ] void SRGP_setFillStyle (drawStyle);
 - [ ] void SRGP_setFont (int value);
-- [ ] void SRGP_setLineStyle (lineStyle);
-- [ ] void SRGP_setLineWidth (int width);
-- [ ] void SRGP_setMarkerStyle (markerStyle);
-- [ ] void SRGP_setMarkerSize (int markerSize);
+- [x] void SRGP_setLineStyle (lineStyle);
+- [x] void SRGP_setLineWidth (int width);
+- [x] void SRGP_setMarkerStyle (markerStyle);
+- [x] void SRGP_setMarkerSize (int markerSize);
 - [ ] void SRGP_setPenBitmapPattern (int patternIndex);
 - [ ] void SRGP_setPenPixmapPattern (int patternIndex);
 - [ ] void SRGP_setPenStyle (drawStyle);
@@ -71,25 +71,25 @@
 - [ ] void SRGP_inquireColorTable (int start, int cnt, ush *r, ush *g, ush *b);
 
 ### output.c
-- [ ] point SRGP_defPoint (int x, int y);
-- [ ] rectangle SRGP_defRectangle (int leftX, int bottomY, int rightX, int topY);
+- [x] point SRGP_defPoint (int x, int y);
+- [x] rectangle SRGP_defRectangle (int leftX, int bottomY, int rightX, int topY);
 - [ ] void SRGP_beep (void);
 - [ ] void SRGP_pointCoord (int x, int y);
 - [ ] void SRGP_point (point);
 - [ ] void SRGP_polyPoint (int vertexCount, point *vertices);
 - [ ] void SRGP_polyPointCoord (int vertexCount, int *xArray, int *yArray);
-- [ ] void SRGP_markerCoord (int x, int y);
-- [ ] void SRGP_marker (point pt);
-- [ ] void SRGP_polyMarker (int vertexCount, point *vertices);
-- [ ] void SRGP_polyMarkerCoord (int vertexCount, int *xArray, int *yArray);
-- [ ] void SRGP_lineCoord (int x1, int y1, int x2, int y2);
-- [ ] void SRGP_line (point pt1, point pt2);
-- [ ] void SRGP_rectangleCoord (int leftX, int bottomY, int rightX, int topY);
-- [ ] void SRGP_rectanglePt (point bottomLeft, point topRight);
-- [ ] void SRGP_rectangle (rectangle rect);
-- [ ] void SRGP_polyLine (int vertexCount, point *vertices);
-- [ ] void SRGP_polyLineCoord (int vertexCount, int *xArray, int *yArray);
-- [ ] void SRGP_polygon (int vertexCount, point *vertices);
+- [x] void SRGP_markerCoord (int x, int y);
+- [x] void SRGP_marker (point pt);
+- [x] void SRGP_polyMarker (int vertexCount, point *vertices);
+- [x] void SRGP_polyMarkerCoord (int vertexCount, int *xArray, int *yArray);
+- [x] void SRGP_lineCoord (int x1, int y1, int x2, int y2);
+- [x] void SRGP_line (point pt1, point pt2);
+- [x] void SRGP_rectangleCoord (int leftX, int bottomY, int rightX, int topY);
+- [x] void SRGP_rectanglePt (point bottomLeft, point topRight);
+- [x] void SRGP_rectangle (rectangle rect);
+- [x] void SRGP_polyLine (int vertexCount, point *vertices);
+- [x] void SRGP_polyLineCoord (int vertexCount, int *xArray, int *yArray);
+- [x] void SRGP_polygon (int vertexCount, point *vertices);
 - [ ] void SRGP_polygonCoord (int vertexCount, int *xArray, int *yArray);
 - [ ] void SRGP_fillRectangleCoord (int leftX, int bottomY, int rightX, int topY);
 - [ ] void SRGP_fillRectanglePt (point bottomLeft, point topRight);
@@ -97,7 +97,7 @@
 - [ ] void SRGP_fillPolygon (int vertexCount, point *vertices);
 - [ ] void SRGP_fillPolygonCoord (int vertexCount, int *xArray, int *yArray);
 - [ ] void SRGP_ellipse (rectangle);
-- [ ] void SRGP_ellipseArc (rectangle extentRect, double startAngle, double endAngle);
+- [x] void SRGP_ellipseArc (rectangle extentRect, double startAngle, double endAngle);
 - [ ] void SRGP_fillEllipse (rectangle);
 - [ ] void SRGP_fillEllipseArc (rectangle, double a1, double a2);
 - [ ] void SRGP_text (point origin, char *text);
@@ -107,7 +107,7 @@
 - [ ] void SRGP_copyPixel (canvasID sourceCanvas, rectangle sourceRect, point destCorner);
 
 ### state.c
-- [ ] void SRGP_begin (char *name, int w, int h, int planes, boolean trace);
+- [x] void SRGP_begin (char *name, int w, int h, int planes, boolean trace);
 - [ ] void SRGP_beginWithDebug (char *name, int w, int h, int planes, boolean trace);
 - [ ] void SRGP_disableDebugAids (void);
 - [ ] void SRGP_enableBlockedWait (void);
@@ -117,4 +117,4 @@
 - [ ] void SRGP_allowResize (boolean);
 - [ ] void SRGP_registerResizeCallback (funcptr);
 - [ ] void SRGP_changeScreenCanvasSize (int newwidth, int newheight);
-- [ ] void SRGP_end (void);
+- [x] void SRGP_end (void);

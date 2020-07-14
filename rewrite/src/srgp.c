@@ -7,26 +7,34 @@
 
 #include "srgp.h"
 
+#define DASH_ELEMENTS 4
+static const char dashmap[][DASH_ELEMENTS] = {
+    [CONTINUOUS] = {  0,  0,  0,  0 },
+    [DASHED]     = { 10,  5, 10,  5 },
+    [DOTTED]     = {  4,  4,  4,  4 },
+    [DOT_DASHED] = { 12,  4,  4,  4 },
+};
+
 typedef struct {
-//    int write_mode;
-//    rectangle clip_rectangle;
+//    int writeMode;
+//    rectangle clipRectangle;
 //    int font;
-//    lineStyle line_style;
-//    int line_width;
-    int marker_size;
-    markerStyle marker_style;
-//    int color;
-//    int background_color;
-//    int plane_mask;
-//    drawStyle fill_style;
-//    int fill_pixmap_pattern_id;
-//    int fill_bitmap_pattern_id;
-//    drawStyle pen_style;
-//    int pen_pixmap_pattern_id;
-//    int pen_bitmap_pattern_id;
+    int lineStyle;
+    int lineWidth;
+    int markerSize;
+    int markerStyle;
+    int colorIndex;
+//    int backgroundColor;
+//    int planeMask;
+//    int fillStyle;
+//    int fillPixmapPatternId;
+//    int fillBitmapPatternId;
+//    int penStyle;
+//    int penPixmapPatternId;
+//    int penBitmapPatternId;
 } attributeGroup;
 
-struct srgp_global_state {
+struct srgpGlobalState {
     int width;
     int height;
     Display* display;
@@ -38,10 +46,20 @@ struct srgp_global_state {
 
 // Global state is unavoidable when maintaining API compatibility.
 // Keeping it all in one spot at least makes it easier to track.
-static struct srgp_global_state _state = { 0 };
+static struct srgpGlobalState _state = { 0 };
 
 #define FLIP_VERT(x) (_state.height - (x))
 #define FLIP_HORIZ(x) (_state.width - (x))
+
+static void
+set_attrib_defaults(void)
+{
+    SRGP_setMarkerSize(10);
+    SRGP_setMarkerStyle(MARKER_CIRCLE);
+    SRGP_setLineStyle(CONTINUOUS);
+    SRGP_setLineWidth(1);
+    SRGP_setColor(COLOR_BLACK);
+}
 
 static int
 x11_error_handler(Display* display, XErrorEvent* e)
@@ -55,12 +73,12 @@ x11_error_handler(Display* display, XErrorEvent* e)
 static void
 x11_draw_circle_marker(int x, int y)
 {
-    int offset = _state.attributes.marker_size / 2;
+    int offset = _state.attributes.markerSize / 2;
     XDrawArc(
         _state.display, _state.window, _state.gc,
         x - offset, FLIP_VERT(y) - offset,
-        _state.attributes.marker_size,
-        _state.attributes.marker_size,
+        _state.attributes.markerSize,
+        _state.attributes.markerSize,
         0, 360 * 64);
     XFlush(_state.display);
 }
@@ -68,19 +86,19 @@ x11_draw_circle_marker(int x, int y)
 static void
 x11_draw_square_marker(int x, int y)
 {
-    int offset = _state.attributes.marker_size / 2;
+    int offset = _state.attributes.markerSize / 2;
     XDrawRectangle(
         _state.display, _state.window, _state.gc,
         x - offset, FLIP_VERT(y) - offset,
-        _state.attributes.marker_size,
-        _state.attributes.marker_size);
+        _state.attributes.markerSize,
+        _state.attributes.markerSize);
     XFlush(_state.display);
 }
 
 static void
 x11_draw_x_marker(int x, int y)
 {
-    int offset = _state.attributes.marker_size / 2;
+    int offset = _state.attributes.markerSize / 2;
     XDrawLine(
         _state.display, _state.window, _state.gc,
         x - offset, FLIP_VERT(y) - offset, x + offset, FLIP_VERT(y) + offset);
@@ -88,13 +106,6 @@ x11_draw_x_marker(int x, int y)
         _state.display, _state.window, _state.gc,
         x - offset, FLIP_VERT(y) + offset, x + offset, FLIP_VERT(y) - offset);
     XFlush(_state.display);
-}
-
-static void
-set_attrib_defaults(void)
-{
-    _state.attributes.marker_size = 10;
-    _state.attributes.marker_style = MARKER_CIRCLE;
 }
 
 void
@@ -109,8 +120,8 @@ SRGP_begin(char* name, int w, int h, int planes, boolean trace)
     XSetErrorHandler(x11_error_handler);
 
     int screen = XDefaultScreen(_state.display);
-    int black = XBlackPixel(_state.display, screen);
     int white = XWhitePixel(_state.display, screen);
+    int black = XBlackPixel(_state.display, screen);
 
     _state.window = XCreateSimpleWindow(
         _state.display,
@@ -139,7 +150,7 @@ SRGP_begin(char* name, int w, int h, int planes, boolean trace)
     XSelectInput(_state.display, _state.window, StructureNotifyMask);
     XMapWindow(_state.display, _state.window);
 
-    while (true) {
+    for (;;) {
         XEvent ev;
         XNextEvent(_state.display, &ev);
         if (ev.type == MapNotify) {
@@ -209,7 +220,7 @@ SRGP_polyLine(int vertexCount, point* vertices)
 void
 SRGP_markerCoord(int x, int y)
 {
-    switch (_state.attributes.marker_style) {
+    switch (_state.attributes.markerStyle) {
         case MARKER_CIRCLE: x11_draw_circle_marker(x, y); break;
         case MARKER_SQUARE: x11_draw_square_marker(x, y); break;
         case MARKER_X: x11_draw_x_marker(x, y); break;
@@ -219,7 +230,7 @@ SRGP_markerCoord(int x, int y)
 void
 SRGP_marker(point pt)
 {
-    switch (_state.attributes.marker_style) {
+    switch (_state.attributes.markerStyle) {
         case MARKER_CIRCLE: x11_draw_circle_marker(pt.x, pt.y); break;
         case MARKER_SQUARE: x11_draw_square_marker(pt.x, pt.y); break;
         case MARKER_X: x11_draw_x_marker(pt.x, pt.y); break;
@@ -230,7 +241,7 @@ void
 SRGP_polyMarkerCoord(int vertexCount, int* xArray, int* yArray)
 {
     while (vertexCount--) {
-        switch (_state.attributes.marker_style) {
+        switch (_state.attributes.markerStyle) {
             case MARKER_CIRCLE: x11_draw_circle_marker(*xArray, *yArray); break;
             case MARKER_SQUARE: x11_draw_square_marker(*xArray, *yArray); break;
             case MARKER_X: x11_draw_x_marker(*xArray, *yArray); break;
@@ -244,7 +255,7 @@ void
 SRGP_polyMarker(int vertexCount, point* vertices)
 {
     while (vertexCount--) {
-        switch (_state.attributes.marker_style) {
+        switch (_state.attributes.markerStyle) {
             case MARKER_CIRCLE: x11_draw_circle_marker(vertices->x, vertices->y); break;
             case MARKER_SQUARE: x11_draw_square_marker(vertices->x, vertices->y); break;
             case MARKER_X: x11_draw_x_marker(vertices->x, vertices->y); break;
@@ -318,6 +329,69 @@ SRGP_ellipseArc(rectangle extentRect, double startAngle, double endAngle)
         extentRect.topRight.y - extentRect.bottomLeft.y,
         xangle1, xangle2);
     XFlush(_state.display);
+}
+
+void
+SRGP_setLineStyle(int lineStyle)
+{
+    if (_state.attributes.lineStyle == lineStyle) return;
+    _state.attributes.lineStyle = lineStyle;
+
+    if (_state.attributes.lineStyle != CONTINUOUS) {
+        XSetDashes(_state.display, _state.gc, 0, dashmap[lineStyle], DASH_ELEMENTS);
+    }
+
+    XSetLineAttributes(
+        _state.display, _state.gc,
+        _state.attributes.lineWidth,
+        _state.attributes.lineStyle == CONTINUOUS ? LineSolid : LineOnOffDash,
+        CapButt,
+        JoinBevel);
+}
+
+void
+SRGP_setLineWidth(int width)
+{
+    if (_state.attributes.lineWidth == width) return;
+    _state.attributes.lineWidth = width;
+
+    XSetLineAttributes(
+        _state.display, _state.gc,
+        _state.attributes.lineWidth,
+        _state.attributes.lineStyle == CONTINUOUS ? LineSolid : LineOnOffDash,
+        CapButt,
+        JoinBevel);
+}
+
+void
+SRGP_setMarkerSize(int markerSize)
+{
+    if (_state.attributes.markerSize == markerSize) return;
+    _state.attributes.markerSize = markerSize;
+}
+
+void
+SRGP_setMarkerStyle(int markerStyle)
+{
+    if (_state.attributes.markerStyle == markerStyle) return;
+    _state.attributes.markerStyle = markerStyle;
+}
+
+void
+SRGP_setColor(int colorIndex)
+{
+    if (_state.attributes.colorIndex == colorIndex) return;
+    _state.attributes.colorIndex = colorIndex;
+
+    int screen = XDefaultScreen(_state.display);
+    int white = XWhitePixel(_state.display, screen);
+    int black = XBlackPixel(_state.display, screen);
+
+    if (colorIndex == COLOR_WHITE) {
+        XSetForeground(_state.display, _state.gc, white);
+    } else if (colorIndex == COLOR_BLACK) {
+        XSetForeground(_state.display, _state.gc, black);
+    }
 }
 
 //void

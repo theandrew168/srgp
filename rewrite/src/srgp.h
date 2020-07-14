@@ -5,12 +5,15 @@ typedef unsigned char boolean;
 #define TRUE  1
 #define FALSE 0
 
-//typedef enum {
-//    CONTINUOUS = 0,
-//    DASHED,
-//    DOTTED,
-//    DOT_DASHED,
-//} lineStyle;
+#define COLOR_WHITE 0
+#define COLOR_BLACK 1
+
+typedef enum {
+    CONTINUOUS = 0,
+    DASHED,
+    DOTTED,
+    DOT_DASHED,
+} lineStyle;
 
 typedef enum {
     MARKER_CIRCLE = 0,
@@ -61,6 +64,15 @@ rectangle SRGP_defRectangle(int leftX, int bottomY, int rightX, int topY);
 
 // Circles and ellipses (page 30-31)
 void SRGP_ellipseArc(rectangle extentRect, double startAngle, double endAngle);
+
+// Line style and line width (page 31-32)
+void SRGP_setLineStyle(int lineStyle);
+void SRGP_setLineWidth(int width);
+void SRGP_setMarkerSize(int markerSize);
+void SRGP_setMarkerStyle(int markerStyle);
+
+// Color (page 32-33)
+void SRGP_setColor(int colorIndex);
 
 //void SRGP_text(point origin, char* str);
 //void SRGP_beep(void);

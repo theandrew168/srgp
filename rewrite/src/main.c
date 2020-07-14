@@ -36,6 +36,17 @@ main(void)
 
     SRGP_ellipseArc(r, 45, 270);
 
+    SRGP_setLineWidth(5);
+    SRGP_lineCoord(55, 5, 55, 295);
+
+    SRGP_setLineWidth(10);
+    SRGP_setLineStyle(DASHED);
+    SRGP_lineCoord(105, 5, 155, 295);
+
+    SRGP_setLineWidth(15);
+    SRGP_setLineStyle(DOTTED);
+    SRGP_lineCoord(155, 5, 285, 255);
+
     nanosleep(&(struct timespec){ .tv_sec = 3}, NULL);
     SRGP_end();
 }

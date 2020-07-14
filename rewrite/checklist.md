@@ -61,14 +61,14 @@
 - [ ] void SRGP_setKeyboardEchoFont (int fontindex);
 
 ### inquire.c
-void SRGP_inquireAttributes (attributeGroup *group);
-rectangle SRGP_inquireClipRectangle (void);
-canvasID SRGP_inquireActiveCanvas (void);
-rectangle SRGP_inquireCanvasExtent (canvasID id);
-void SRGP_inquireCanvasSize (canvasID, int *w, int *h);
-int	SRGP_inquireCanvasDepth (void);
-lineStyle SRGP_inquireLineStyle (void);
-void SRGP_inquireColorTable (int start, int cnt, ush *r, ush *g, ush *b);
+- [ ] void SRGP_inquireAttributes (attributeGroup *group);
+- [ ] rectangle SRGP_inquireClipRectangle (void);
+- [ ] canvasID SRGP_inquireActiveCanvas (void);
+- [ ] rectangle SRGP_inquireCanvasExtent (canvasID id);
+- [ ] void SRGP_inquireCanvasSize (canvasID, int *w, int *h);
+- [ ] int SRGP_inquireCanvasDepth (void);
+- [ ] lineStyle SRGP_inquireLineStyle (void);
+- [ ] void SRGP_inquireColorTable (int start, int cnt, ush *r, ush *g, ush *b);
 
 ### output.c
 - [ ] point SRGP_defPoint (int x, int y);

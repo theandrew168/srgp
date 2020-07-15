@@ -2,7 +2,7 @@
 
 ### attribute.c
 - [ ] void SRGP_setAttributes (attributeGroup* group);
-- [ ] void SRGP_setBackgroundColor (int colorIndex);
+- [x] void SRGP_setBackgroundColor (int colorIndex);
 - [ ] void SRGP_setClipRectangle (rectangle clipRect);
 - [x] void SRGP_setColor (int colorIndex);
 - [x] void SRGP_setFillBitmapPattern (int patternIndex);

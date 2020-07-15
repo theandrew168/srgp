@@ -699,6 +699,61 @@ SRGP_fillRectanglePt(point bottomLeft, point topRight)
     SRGP_fillRectangleCoord(bottomLeft.x, bottomLeft.y, topRight.x, topRight.y);
 }
 
+void
+SRGP_pointCoord(int x, int y)
+{
+    XDrawPoint(_state.display, _state.window, _state.gc, x, FLIP_VERT(y));
+    XFlush(_state.display);
+}
+
+void
+SRGP_point(point pt)
+{
+    SRGP_pointCoord(pt.x, pt.y);
+}
+
+void
+SRGP_polyPoint(int vertexCount, point* vertices)
+{
+    XPoint* points = malloc(vertexCount * sizeof(XPoint));
+    for (long i = 0; i < vertexCount; i++) {
+        points[i].x = vertices[i].x;
+        points[i].y = FLIP_VERT(vertices[i].y);
+    }
+
+    XDrawPoints(
+        _state.display, _state.window, _state.gc,
+        points, vertexCount,
+        CoordModeOrigin);
+    XFlush(_state.display);
+
+    free(points);
+}
+
+void
+SRGP_polyPointCoord(int vertexCount, int* xArray, int* yArray)
+{
+    XPoint* points = malloc(vertexCount * sizeof(XPoint));
+    for (long i = 0; i < vertexCount; i++) {
+        points[i].x = xArray[i];
+        points[i].y = FLIP_VERT(yArray[i]);
+    }
+
+    XDrawPoints(
+        _state.display, _state.window, _state.gc,
+        points, vertexCount,
+        CoordModeOrigin);
+    XFlush(_state.display);
+
+    free(points);
+}
+
+void
+SRGP_refresh(void)
+{
+    XSync(_state.display, False);
+}
+
 //void
 //SRGP_text(point origin, char* str)
 //{

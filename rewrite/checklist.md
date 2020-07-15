@@ -74,10 +74,10 @@
 - [x] point SRGP_defPoint (int x, int y);
 - [x] rectangle SRGP_defRectangle (int leftX, int bottomY, int rightX, int topY);
 - [x] void SRGP_beep (void);
-- [ ] void SRGP_pointCoord (int x, int y);
-- [ ] void SRGP_point (point);
-- [ ] void SRGP_polyPoint (int vertexCount, point *vertices);
-- [ ] void SRGP_polyPointCoord (int vertexCount, int *xArray, int *yArray);
+- [x] void SRGP_pointCoord (int x, int y);
+- [x] void SRGP_point (point);
+- [x] void SRGP_polyPoint (int vertexCount, point *vertices);
+- [x] void SRGP_polyPointCoord (int vertexCount, int *xArray, int *yArray);
 - [x] void SRGP_markerCoord (int x, int y);
 - [x] void SRGP_marker (point pt);
 - [x] void SRGP_polyMarker (int vertexCount, point *vertices);
@@ -101,7 +101,7 @@
 - [x] void SRGP_fillEllipse (rectangle);
 - [x] void SRGP_fillEllipseArc (rectangle, double a1, double a2);
 - [ ] void SRGP_text (point origin, char *text);
-- [ ] void SRGP_refresh (void);
+- [x] void SRGP_refresh (void);
 
 ### raster.c
 - [ ] void SRGP_copyPixel (canvasID sourceCanvas, rectangle sourceRect, point destCorner);

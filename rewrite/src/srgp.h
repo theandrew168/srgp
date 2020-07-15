@@ -92,6 +92,11 @@ void SRGP_polygonCoord(int vertexCount, int* xArray, int* yArray);
 void SRGP_fillPolygonCoord(int vertexCount, int* xArray, int* yArray);
 void SRGP_ellipse(rectangle extentRect);
 void SRGP_fillRectanglePt(point bottomLeft, point topRight);
+void SRGP_pointCoord(int x, int y);
+void SRGP_point(point pt);
+void SRGP_polyPoint(int vertexCount, point* vertices);
+void SRGP_polyPointCoord(int vertexCount, int* xArray, int* yArray);
+void SRGP_refresh(void);
 
 //void SRGP_text(point origin, char* str);
 

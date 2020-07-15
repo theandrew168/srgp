@@ -5,9 +5,9 @@
 - [ ] void SRGP_setBackgroundColor (int colorIndex);
 - [ ] void SRGP_setClipRectangle (rectangle clipRect);
 - [x] void SRGP_setColor (int colorIndex);
-- [ ] void SRGP_setFillBitmapPattern (int patternIndex);
-- [ ] void SRGP_setFillPixmapPattern (int patternIndex);
-- [ ] void SRGP_setFillStyle (drawStyle);
+- [x] void SRGP_setFillBitmapPattern (int patternIndex);
+- [x] void SRGP_setFillPixmapPattern (int patternIndex);
+- [x] void SRGP_setFillStyle (drawStyle);
 - [ ] void SRGP_setFont (int value);
 - [x] void SRGP_setLineStyle (lineStyle);
 - [x] void SRGP_setLineWidth (int width);
@@ -91,15 +91,15 @@
 - [x] void SRGP_polyLineCoord (int vertexCount, int *xArray, int *yArray);
 - [x] void SRGP_polygon (int vertexCount, point *vertices);
 - [ ] void SRGP_polygonCoord (int vertexCount, int *xArray, int *yArray);
-- [ ] void SRGP_fillRectangleCoord (int leftX, int bottomY, int rightX, int topY);
+- [x] void SRGP_fillRectangleCoord (int leftX, int bottomY, int rightX, int topY);
 - [ ] void SRGP_fillRectanglePt (point bottomLeft, point topRight);
-- [ ] void SRGP_fillRectangle (rectangle);
-- [ ] void SRGP_fillPolygon (int vertexCount, point *vertices);
+- [x] void SRGP_fillRectangle (rectangle);
+- [x] void SRGP_fillPolygon (int vertexCount, point *vertices);
 - [ ] void SRGP_fillPolygonCoord (int vertexCount, int *xArray, int *yArray);
 - [ ] void SRGP_ellipse (rectangle);
 - [x] void SRGP_ellipseArc (rectangle extentRect, double startAngle, double endAngle);
-- [ ] void SRGP_fillEllipse (rectangle);
-- [ ] void SRGP_fillEllipseArc (rectangle, double a1, double a2);
+- [x] void SRGP_fillEllipse (rectangle);
+- [x] void SRGP_fillEllipseArc (rectangle, double a1, double a2);
 - [ ] void SRGP_text (point origin, char *text);
 - [ ] void SRGP_refresh (void);
 

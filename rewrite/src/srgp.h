@@ -21,12 +21,13 @@ typedef enum {
     MARKER_X,
 } markerStyle;
 
-//typedef enum {
-//    SOLID = 0,
-//    PIXMAP_PATTERN,
-//    BITMAP_PATTERN_TRANSPARENT,
-//    BITMAP_PATTERN_OPAQUE,
-//} drawStyle;
+// these MUST line up with X11 defs: FillSolid, FillTiled, FillStippled, FillOpaqueStippled
+typedef enum {
+    SOLID = 0,
+    PIXMAP_PATTERN,
+    BITMAP_PATTERN_TRANSPARENT,
+    BITMAP_PATTERN_OPAQUE,  // TODO this isn't working right: it's acting like SOLID
+} drawStyle;
 
 typedef struct {
     int x;
@@ -66,13 +67,24 @@ rectangle SRGP_defRectangle(int leftX, int bottomY, int rightX, int topY);
 void SRGP_ellipseArc(rectangle extentRect, double startAngle, double endAngle);
 
 // Line style and line width (page 31-32)
-void SRGP_setLineStyle(int lineStyle);
+void SRGP_setLineStyle(lineStyle lineStyle);
 void SRGP_setLineWidth(int width);
 void SRGP_setMarkerSize(int markerSize);
-void SRGP_setMarkerStyle(int markerStyle);
+void SRGP_setMarkerStyle(markerStyle markerStyle);
 
 // Color (page 32-33)
 void SRGP_setColor(int colorIndex);
+void SRGP_setBackgroundColor(int colorIndex);
+
+// File style and fill pattern for areas (page 34-36)
+void SRGP_setFillStyle(drawStyle drawStyle);
+void SRGP_setFillBitmapPattern(int patternIndex);
+void SRGP_setFillPixmapPattern(int patternIndex);
+void SRGP_fillPolygon(int vertexCount, point* vertices);
+void SRGP_fillEllipseArc(rectangle extentRect, double startAngle, double endAngle);
+void SRGP_fillEllipse(rectangle extentRect);
+void SRGP_fillRectangleCoord(int leftX, int bottomY, int rightX, int topY);
+void SRGP_fillRectangle(rectangle rect);
 
 //void SRGP_text(point origin, char* str);
 //void SRGP_beep(void);

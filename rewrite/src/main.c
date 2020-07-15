@@ -47,20 +47,20 @@ main(void)
     SRGP_setLineStyle(DOTTED);
     SRGP_lineCoord(155, 5, 285, 255);
 
-    point triangle[] = {
-        { 0, 0 },
-        { 50, 100 },
-        { 100, 0 },
-    };
-
-    //SRGP_setFillStyle(BITMAP_PATTERN_TRANSPARENT);
-    SRGP_setFillStyle(BITMAP_PATTERN_OPAQUE);
-    SRGP_setFillBitmapPattern(3);
-    SRGP_fillPolygon(3, triangle);
-
-    rectangle r2 = SRGP_defRectangle(25, 0, 175, 150);
-    SRGP_setFillBitmapPattern(33);
-    SRGP_fillEllipseArc(r2, 60.0, 290.0);
+//    point triangle[] = {
+//        { 0, 0 },
+//        { 50, 100 },
+//        { 100, 0 },
+//    };
+//
+//    //SRGP_setFillStyle(BITMAP_PATTERN_TRANSPARENT);
+//    SRGP_setFillStyle(BITMAP_PATTERN_OPAQUE);
+//    SRGP_setFillBitmapPattern(3);
+//    SRGP_fillPolygon(3, triangle);
+//
+//    rectangle r2 = SRGP_defRectangle(25, 0, 175, 150);
+//    SRGP_setFillBitmapPattern(33);
+//    SRGP_fillEllipseArc(r2, 60.0, 290.0);
 
     nanosleep(&(struct timespec){ .tv_sec = 3}, NULL);
     SRGP_end();

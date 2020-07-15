@@ -73,7 +73,7 @@
 ### output.c
 - [x] point SRGP_defPoint (int x, int y);
 - [x] rectangle SRGP_defRectangle (int leftX, int bottomY, int rightX, int topY);
-- [ ] void SRGP_beep (void);
+- [x] void SRGP_beep (void);
 - [ ] void SRGP_pointCoord (int x, int y);
 - [ ] void SRGP_point (point);
 - [ ] void SRGP_polyPoint (int vertexCount, point *vertices);
@@ -90,13 +90,13 @@
 - [x] void SRGP_polyLine (int vertexCount, point *vertices);
 - [x] void SRGP_polyLineCoord (int vertexCount, int *xArray, int *yArray);
 - [x] void SRGP_polygon (int vertexCount, point *vertices);
-- [ ] void SRGP_polygonCoord (int vertexCount, int *xArray, int *yArray);
+- [x] void SRGP_polygonCoord (int vertexCount, int *xArray, int *yArray);
 - [x] void SRGP_fillRectangleCoord (int leftX, int bottomY, int rightX, int topY);
-- [ ] void SRGP_fillRectanglePt (point bottomLeft, point topRight);
+- [x] void SRGP_fillRectanglePt (point bottomLeft, point topRight);
 - [x] void SRGP_fillRectangle (rectangle);
 - [x] void SRGP_fillPolygon (int vertexCount, point *vertices);
-- [ ] void SRGP_fillPolygonCoord (int vertexCount, int *xArray, int *yArray);
-- [ ] void SRGP_ellipse (rectangle);
+- [x] void SRGP_fillPolygonCoord (int vertexCount, int *xArray, int *yArray);
+- [x] void SRGP_ellipse (rectangle);
 - [x] void SRGP_ellipseArc (rectangle extentRect, double startAngle, double endAngle);
 - [x] void SRGP_fillEllipse (rectangle);
 - [x] void SRGP_fillEllipseArc (rectangle, double a1, double a2);

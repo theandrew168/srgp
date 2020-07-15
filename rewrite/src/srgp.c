@@ -656,12 +656,49 @@ SRGP_fillRectangle(rectangle rect)
     SRGP_fillRectangleCoord(rect.bottomLeft.x, rect.bottomLeft.y, rect.topRight.x, rect.topRight.y);
 }
 
-//void
-//SRGP_beep(void)
-//{
-//    XBell(_state.display, 0);
-//}
-//
+void
+SRGP_beep(void)
+{
+    XBell(_state.display, 0);
+}
+
+void
+SRGP_polygonCoord(int vertexCount, int* xArray, int* yArray)
+{
+    SRGP_polyLineCoord(vertexCount, xArray, yArray);
+    SRGP_lineCoord(xArray[0], yArray[0], xArray[vertexCount - 1], yArray[vertexCount - 1]);
+}
+
+void
+SRGP_fillPolygonCoord(int vertexCount, int* xArray, int* yArray)
+{
+    XPoint* points = malloc(vertexCount * sizeof(XPoint));
+    for (long i = 0; i < vertexCount; i++) {
+        points[i].x = xArray[i];
+        points[i].y = FLIP_VERT(yArray[i]);
+    }
+
+    XFillPolygon(
+        _state.display, _state.window, _state.gc,
+        points, vertexCount,
+        Complex, CoordModeOrigin);
+    XFlush(_state.display);
+
+    free(points);
+}
+
+void
+SRGP_ellipse(rectangle extentRect)
+{
+    SRGP_ellipseArc(extentRect, 0.0, 360.0);
+}
+
+void
+SRGP_fillRectanglePt(point bottomLeft, point topRight)
+{
+    SRGP_fillRectangleCoord(bottomLeft.x, bottomLeft.y, topRight.x, topRight.y);
+}
+
 //void
 //SRGP_text(point origin, char* str)
 //{

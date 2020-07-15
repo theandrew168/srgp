@@ -86,10 +86,13 @@ void SRGP_fillEllipse(rectangle extentRect);
 void SRGP_fillRectangleCoord(int leftX, int bottomY, int rightX, int topY);
 void SRGP_fillRectangle(rectangle rect);
 
+// Missing pieces
+void SRGP_beep(void);
+void SRGP_polygonCoord(int vertexCount, int* xArray, int* yArray);
+void SRGP_fillPolygonCoord(int vertexCount, int* xArray, int* yArray);
+void SRGP_ellipse(rectangle extentRect);
+void SRGP_fillRectanglePt(point bottomLeft, point topRight);
+
 //void SRGP_text(point origin, char* str);
-//void SRGP_beep(void);
-//void SRGP_setFillStyle(drawStyle value);
-//void SRGP_setFillBitmapPattern(int value);
-//void SRGP_fillRectangleCoord(int left_x, int bottom_y, int right_x, int top_y);
 
 #endif
